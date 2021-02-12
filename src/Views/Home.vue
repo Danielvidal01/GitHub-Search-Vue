@@ -12,9 +12,8 @@
 
 <script>
 
-
 export default {
-
+    
     data(){
         return{
             userName:'',
@@ -33,10 +32,6 @@ export default {
 </script>
 
 <style>
-.fetch{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 </style>
