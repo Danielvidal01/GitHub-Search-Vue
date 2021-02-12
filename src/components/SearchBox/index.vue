@@ -1,11 +1,11 @@
 <template>
    <div class="Search">
-          <h4><strong>GitHub</strong> search</h4>
-    <div class="box">
-        <input type="text" v-model="Name" >
-    <button type="submit" v-on:click="$emit('changeName',Name)">P</button>
+          <router-link to="/"><h1><strong>GitHub</strong> <i> search</i></h1></router-link>
+        <form v-on:submit="$emit('changeName',Name)" >
+            <input type="text" v-model="Name" >
+        <button type="submit" >P</button>
+        </form>
     </div>
-      </div>
 </template>
 
 <script>
@@ -25,24 +25,32 @@ export default {
     justify-content: space-between;
     align-items: center;
 }
-.box{
+.Search h1{
+    font-size: 42px;
+    font-weight: 400;
+
+}
+form{
     display: flex;
     height: 50px;
     
 }
-.box input{
+form input{
     display: flex;
     width: 600px;
     margin: 0px;
     border: 4px solid black;
+    font-size: 26px;
+    
     
 }
-.box button{
+form button{
     margin: 0px;
     width: 100px;
     border: 4px solid black;
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 
 </style>

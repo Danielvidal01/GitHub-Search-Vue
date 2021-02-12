@@ -1,19 +1,17 @@
 <template>
   <div class="Home">
-      <div class="fetch">
-          <h1><strong>GitHub</strong> search</h1>
-    <input type="text" v-model="userName" >
     
-    <button type="submit" @click="shareData()">P</button>
-      </div>
+      <SearchBox @changeName="ClickChange"/>
       
   </div>
 </template>
 
 <script>
-
+import SearchBox from '../components/SearchBox'
 export default {
-    
+    components:{
+SearchBox
+    },
     data(){
         return{
             userName:'',
@@ -25,13 +23,24 @@ export default {
                 return
             }
             this.$router.push({name:'detail',params:{data:this.userName}})
+        },
+        ClickChange(Name){
+            this.userName=Name
+            this.shareData()
         }
     }
 
 }
 </script>
 
-<style>
-
-
+<style scoped>
+.Search{
+    margin-top: 40%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form input{
+    text-align: center;
+}
 </style>

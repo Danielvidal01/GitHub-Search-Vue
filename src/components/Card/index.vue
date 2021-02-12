@@ -1,8 +1,8 @@
 <template>
     <div class="Card" >
               <a :href="link" target="_blank">
-                  <h3>{{name}}</h3>
-                <h4>{{description}}</h4>
+                  <h2>{{name}}</h2>
+                <p>{{description}}</p>
                 <h5>{{stars}}</h5>
               </a>
     </div>
@@ -41,5 +41,6 @@ a{
 }
 .card p{
     justify-self: flex-start;
+    color: 757575, 100%;
 }
 </style>
