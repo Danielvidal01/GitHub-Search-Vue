@@ -3,7 +3,7 @@
       <div class="fetch">
           <h1><strong>GitHub</strong> search</h1>
     <input type="text" v-model="userName" >
-
+    
     <button type="submit" @click="shareData()">P</button>
       </div>
       
@@ -22,6 +22,9 @@ export default {
     },
     methods:{
         shareData(){
+            if(this.userName ==''){
+                return
+            }
             this.$router.push({name:'detail',params:{data:this.userName}})
         }
     }
@@ -30,5 +33,10 @@ export default {
 </script>
 
 <style>
+.Home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 </style>
