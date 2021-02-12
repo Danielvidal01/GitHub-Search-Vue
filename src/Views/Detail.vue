@@ -10,14 +10,18 @@
 
     <div v-else class="main">
   
-        <UserDetail :info="info"/>
+        <div class="info">
+            <UserDetail :info="info"/>
+        </div>
         
-        <Card class="card" v-for="repo in repos" 
+        <div class="cards">
+            <Card class="card" v-for="repo in repos" 
             :key="repo.id"
             :name="repo.name"
             :description="repo.description" 
             :stars="repo.stargazers_count" 
             :link="repo.html_url"/>
+        </div>
 
     </div>
 </div>
@@ -71,10 +75,22 @@ export default {
 
 <style>
 .main{
-    display: flex;
+    display: grid;
     flex-direction: row;
-    position: absolute;
+    grid-auto-columns: 2fr 3fr;
+    gap: 4px;
+    grid-template-areas: "info Cards";
 }
+.info{
+    position: fixed;
+    grid-area: info;
+}
+ .cards{
+     grid-area: Cards;
+     display: flex;
+     align-items: flex-start;
+     flex-direction: column;
+ }
 .if{
     display: flex;
     flex-direction: column;

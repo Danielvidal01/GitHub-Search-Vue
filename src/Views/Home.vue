@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style>
-.Home{
+.fetch{
     display: flex;
     justify-content: center;
     align-items: center;
