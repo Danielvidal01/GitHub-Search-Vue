@@ -1,22 +1,18 @@
 <template>
-  <div class="Home">
-      <div class="fetch">
-          <h1><strong>GitHub</strong> search</h1>
-    <input type="text" v-model="User" ><button type="submit" v-on:click="onClick">P</button>
-      </div>
-      
+  <div>
+      <h1>UserDetail</h1>
+      <h2>{{User}}</h2>
   </div>
+
 </template>
 
 <script>
 import axios from 'axios'
-export default {
 
-    data(){
+export default {
+      data(){
         return{
             User:'',
-            info:{},
-            repos:{}
         }
     },
     methods:{
@@ -27,6 +23,8 @@ export default {
             this.repos = ResponseRepos.data;
             this.User=''
         }
+    },created(){
+        this.User=this.$route.params.data
     }
 
 }
