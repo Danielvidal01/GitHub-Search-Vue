@@ -1,4 +1,4 @@
-# git-api
+# Github-Search
 
 ## Project setup
 ```

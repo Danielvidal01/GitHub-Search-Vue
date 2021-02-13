@@ -37,7 +37,8 @@ a{
     }
 
 .card{
-    margin-bottom: 25px;
+    margin-bottom: 2%;
+    max-width: 40vw;
     display: flex;
     flex-direction: column;
     align-items: flex-start ;
@@ -48,16 +49,14 @@ a{
     align-items: center;
 }
 .card p{
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 5px;
-    align-self: center;
+    margin: 0.2% 0% 0.2% 0.25%;
+    align-self: flex-start;
     justify-self: flex-start;
     color:rgba(117, 117, 117, 1)
 }
 .card h2{
     margin: 0;
-    font-size: 36px;
+    font-size: 2.2rem;
     font-weight: 300;
 }
 </style>

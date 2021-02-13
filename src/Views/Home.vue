@@ -32,8 +32,14 @@ SearchBox
 </script>
 
 <style scoped>
+main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .Search{
-    margin-top: 40%;
     flex-direction: column;
     justify-content: center;
     align-items: center;

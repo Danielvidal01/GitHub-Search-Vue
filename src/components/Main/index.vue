@@ -5,10 +5,10 @@
           <Redirect/>
     </div>
 
+    <header>
+        <SearchBox @changeName="ClickChange"/>
+    </header>
     <div class="main" >
-        <header>
-            <SearchBox @changeName="ClickChange"/>
-        </header>
     
         <section class="info">
             <UserDetail :info="info" :stars="stars"/>
@@ -99,37 +99,40 @@ export default {
 
 
 </script>
-
-<style>
-
+<style scoped>
+.Content{
+    margin-top: 3vh;
+}
+.Search{
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 6vw ;
+}
 .main{
-    box-sizing: border-box;
-    width: 1440px;
-    display: grid;
-    margin: 0 4%;
-    grid-template-rows: auto;
-    grid-template-columns: 2fr 4fr;
-    grid-template-areas: "header header"
-                         "info cards";
-}
-.info{
-    grid-area: info;
-}
-header{
-    grid-area: header;
-    
-}
- .cards{
-     grid-area: cards;
-     display: flex;
-     align-items: flex-start;
-     flex-direction: column;
- }
-.if{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    min-width: 80vw;
 }
 
+@media screen and (max-width:900px) {
+    .Search{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: none;
+    }
+    .main{
+        margin: 5vh 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    .info{
+        align-self: flex-start;
+    }
+    .cards{
+        margin-top: 5vh;
+        align-self: flex-start;
+    }
+}
 </style>
