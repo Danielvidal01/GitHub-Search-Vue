@@ -1,8 +1,11 @@
 <template>
   <div class="UserDetail">
       <img class="avatar" :src="info.avatar_url" >
-        <h3>{{info.name}}</h3>
-        
+        <div class="name">
+            <h1>{{info.name}}</h1>
+            <p>{{info.login}}</p> 
+        </div>
+
         <div class="line">
         <img src="../../assets/organization.svg" alt="organization">
         <p>{{Company}}</p>
@@ -65,12 +68,23 @@ export default {
     height: 300px;
     box-shadow: 0.5px 0.5px 4px rgba(117, 117, 117, 1);
 }
+.name h1{
+    margin-bottom: 0;
+}
+.name p{
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: rgba(117, 117, 117, 1);
+}
 .line{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin: 5px 0px;
 }
 .line p{
+    margin-top: 0;
+    margin-bottom: 0;
     margin-left: 12px;
     font-weight: 300;
     color:rgba(117, 117, 117, 1)
