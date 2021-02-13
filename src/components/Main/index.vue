@@ -2,27 +2,26 @@
     
 <div class="Content">
     <div class="if" v-if="!User || !info">
-          <p>Search for valid githubUsers</p>
-            <router-link to="/">Home</router-link>
+          <Redirect/>
     </div>
 
-    <div v-else class="main">
+    <div v-else class="main" >
         <header>
             <SearchBox @changeName="ClickChange"/>
         </header>
-
-        <div class="info">
-            <UserDetail :info="info"/>
-        </div>
+    
+        <section class="info">
+            <UserDetail :info="info" :stars="stars"/>
+        </section>
         
-        <div class="cards">
-            <Card class="card" v-for="repo in repos" 
+        <section class="cards">
+            <Card class="card" v-for="repo in sortRepos" 
             :key="repo.id"
             :name="repo.name"
             :description="repo.description" 
             :stars="repo.stargazers_count" 
             :link="repo.html_url"/>
-        </div>
+        </section>
 
     </div>
 </div>
@@ -34,40 +33,62 @@ import axios from 'axios'
 import Card from '../Card'
 import UserDetail from '../UserDetail'
 import SearchBox from '../SearchBox'
+import Redirect from '../Redirect'
 
 export default {
     components:{
         Card,
         UserDetail,
-        SearchBox
+        SearchBox,
+        Redirect
     },
       data(){
         return{
             User:'',
+            stars:0,
             info:[],
             repos:[]
         }
     },
-    methods:{
-        async search(userName){
-            try {
-                const ResponseUser = await axios.get(`https://api.github.com/users/${userName}`)
-                const ResponseRepos = await axios.get(`https://api.github.com/users/${userName}/repos`)
-                const Repo = this.orderBy(ResponseRepos.data)
-                this.info = ResponseUser.data;
-                this.repos = Repo;
-            } catch (error) {
-                this.info=false
-                console.error(error.message)
+    computed:{
+        sortRepos(){
+                return this.orderBy(this.repos)
             }
         },
-        orderBy(obj){
-            return obj.sort((a,b) => (a.stargazers_count > b.stargazers_count) ? - 1 : ((b.stargazers_count > a.stargazers_count) ? 1 : 0))
-        },ClickChange(Name){
-            this.User=Name
-            this.search(this.User)
-        }
-    },created(){
+    methods:{
+            async search(userName){
+                try {
+                    const ResponseUser = await axios.get(`https://api.github.com/users/${userName}`)
+                    const ResponseRepos = await axios.get(`https://api.github.com/users/${userName}/repos`)
+                    this.info = ResponseUser.data; 
+                    this.repos = ResponseRepos.data;
+                    this.stars=0
+                    this.countStars(this.repos)
+                } catch (error) {
+                    this.info=false
+                    alert('usuario não encontrado!')
+                    this.$router.push({name:'home'})
+                }
+            },
+
+            orderBy(obj){
+                return obj.sort((a,b) => (a.stargazers_count > b.stargazers_count) ? - 1 : ((b.stargazers_count > a.stargazers_count) ? 1 : 0))
+            },
+
+            ClickChange(Name){
+                this.User=Name
+                this.search(this.User)
+            },
+
+            countStars(repos){
+                return repos.map(repo=>{
+                    this.stars += repo.stargazers_count
+                })
+            }
+        },
+    
+    
+    created(){
         this.User=this.$route.params.data
         if(!this.User){
             return

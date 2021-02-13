@@ -1,9 +1,7 @@
 <template>
-  <div class="Home">
-    
+  <main>
       <SearchBox @changeName="ClickChange"/>
-      
-  </div>
+  </main>
 </template>
 
 <script>

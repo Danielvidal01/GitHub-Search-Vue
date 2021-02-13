@@ -3,7 +3,9 @@
               <a :href="link" target="_blank">
                   <h2>{{name}}</h2>
                 <p>{{description}}</p>
-                <h5>{{stars}}</h5>
+                <div class="stars">
+                    <img src="../../assets/star.svg" alt=""> <p>{{stars}}</p>
+                </div>
               </a>
     </div>
 </template>
@@ -39,8 +41,15 @@ a{
     flex-direction: column;
     align-items: flex-start ;
 }
+.stars{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
 .card p{
+    margin-left: 5px;
+    align-self: center;
     justify-self: flex-start;
-    color: 757575, 100%;
+    color:rgba(117, 117, 117, 1)
 }
 </style>

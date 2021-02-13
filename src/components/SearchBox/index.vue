@@ -3,7 +3,7 @@
           <router-link to="/"><h1><strong>GitHub</strong> <i> search</i></h1></router-link>
         <form v-on:submit="$emit('changeName',Name)" >
             <input type="text" v-model="Name" >
-        <button type="submit" >P</button>
+        <button type="submit" ><img src="../../assets/search.svg" alt=""></button>
         </form>
     </div>
 </template>
@@ -41,8 +41,12 @@ form input{
     margin: 0px;
     border: 4px solid black;
     font-size: 26px;
+    color: 757575;
     
     
+}
+img{
+    color: white;
 }
 form button{
     margin: 0px;
