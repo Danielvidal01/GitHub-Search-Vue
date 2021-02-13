@@ -5,7 +5,7 @@
           <Redirect/>
     </div>
 
-    <div v-else class="main" >
+    <div class="main" >
         <header>
             <SearchBox @changeName="ClickChange"/>
         </header>
@@ -101,11 +101,14 @@ export default {
 </script>
 
 <style>
+
 .main{
+    box-sizing: border-box;
+    width: 1440px;
     display: grid;
     margin: 0 4%;
     grid-template-rows: auto;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 2fr 4fr;
     grid-template-areas: "header header"
                          "info cards";
 }
