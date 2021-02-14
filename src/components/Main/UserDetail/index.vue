@@ -7,27 +7,27 @@
         </div>
 
         <div class="line">
-        <img src="../../assets/organization.svg" alt="organization">
+        <img src="../../../assets/organization.svg" alt="organization">
         <p>{{Company}}</p>
         </div>
 
         <div class="line">
-            <img src="../../assets/location.svg" alt="location"> 
+            <img src="../../../assets/location.svg" alt="location"> 
             <p>{{Location}}</p>
         </div>
 
         <div class="line">
-            <img src="../../assets/star.svg" alt="star">
+            <img src="../../../assets/star.svg" alt="star">
             <p>{{stars}}</p>
         </div>
         
         <div class="line">
-            <img src="../../assets/repository.svg" alt="repository">
+            <img src="../../../assets/repository.svg" alt="repository">
             <p>{{info.public_repos}}</p>
         </div>
         
         <div class="line">
-            <img src="../../assets/followers.svg" alt="followers">
+            <img src="../../../assets/followers.svg" alt="followers">
             <p> {{info.followers}}</p>
         </div>
   </div>

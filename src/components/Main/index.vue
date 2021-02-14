@@ -4,11 +4,16 @@
     <div class="if" v-if="!User || !info">
           <Redirect/>
     </div>
+    
+    <div class="loading" v-else-if="loading">
+        <Loading/>
+    </div>
 
-    <header>
+   <div class="page" v-else>
+        <header>
         <SearchBox @changeName="ClickChange"/>
-    </header>
-    <div class="main" >
+        </header>
+    <main >
     
         <section class="info">
             <UserDetail :info="info" :stars="stars"/>
@@ -17,37 +22,38 @@
         <section class="cards">
             <Card class="card" v-for="repo in sortRepos" 
             :key="repo.id"
-            :name="repo.name"
-            :description="repo.description" 
-            :stars="repo.stargazers_count" 
-            :link="repo.html_url"/>
+            :repo="repo"/>
         </section>
 
-    </div>
+    </main>
+   </div>
 </div>
 
 </template>
 
 <script>
 import axios from 'axios'
-import Card from '../Card'
-import UserDetail from '../UserDetail'
 import SearchBox from '../SearchBox'
-import Redirect from '../Redirect'
+import Card from './Card';
+import UserDetail from './UserDetail';
+import Redirect from './Redirect'
+import Loading from './Loading'
 
 export default {
     components:{
         Card,
         UserDetail,
         SearchBox,
-        Redirect
+        Redirect,
+        Loading
     },
       data(){
         return{
             User:'',
             stars:0,
             info:[],
-            repos:[]
+            repos:[],
+            loading:false,
         }
     },
     computed:{
@@ -58,16 +64,19 @@ export default {
     methods:{
             async search(userName){
                 try {
-                    const ResponseUser = await axios.get(`https://api.github.com/users/${userName}`)
-                    const ResponseRepos = await axios.get(`https://api.github.com/users/${userName}/repos`)
+                    this.loading = true;
+                    const ResponseUser = await axios.get(`https://api.github.com/users/${userName}`);
+                    const ResponseRepos = await axios.get(`https://api.github.com/users/${userName}/repos`);
                     this.info = ResponseUser.data; 
                     this.repos = ResponseRepos.data;
-                    this.stars=0
-                    this.countStars(this.repos)
+                    this.stars=0;
+                    this.countStars(this.repos);
                 } catch (error) {
-                    this.info=false
-                    alert('usuario não encontrado!')
-                    this.$router.push({name:'home'})
+                    this.info=false;
+                    alert('usuario não encontrado!');
+                    this.$router.push({name:'home'});
+                }finally{
+                    this.loading=false;
                 }
             },
 
@@ -108,7 +117,10 @@ export default {
     justify-content: space-between;
     margin: 0 6vw ;
 }
-.main{
+header{
+    margin-bottom: 2vh;
+}
+main{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -122,8 +134,8 @@ export default {
         justify-content: center;
         min-width: none;
     }
-    .main{
-        margin: 5vh 0;
+    main{
+        margin: 10vh 0;
         flex-direction: column;
         align-items: center;
     }

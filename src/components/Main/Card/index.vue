@@ -1,11 +1,11 @@
 <template>
     <div class="Card" >
-              <a :href="link" target="_blank">
-                  <h2>{{name}}</h2>
+              <a :href="repo.html_url" target="_blank">
+                  <h2>{{repo.name}}</h2>
                   </a>
-                <p>{{description}}</p>
+                <p>{{Description}}</p>
                 <div class="stars">
-                    <img src="../../assets/star.svg" alt=""> <p>{{stars}}</p>
+                    <img src="../../../assets/star.svg" alt=""> <p>{{repo.stargazers_count}}</p>
                 </div>
               
     </div>
@@ -14,17 +14,13 @@
 <script>
 export default {
     props:{
-        name:{
-            type:String
-        },
-        description:{
-            type:String
-        },
-        stars:{
-            type:Number
-        },
-        link:{
-            type:String
+        repo:{
+            type:Object
+        }
+    },
+    computed:{
+        Description(){
+            return this.repo.description===null?'undefinded':this.repo.description
         }
     }
 }
