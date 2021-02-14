@@ -55,6 +55,10 @@ export default {
             repos:[],
             loading:false,
         }
+    },watch:{
+        User(newUser){
+            localStorage.user = newUser
+        }
     },
     computed:{
         sortRepos(){
@@ -100,9 +104,12 @@ export default {
     
     
     created(){
-        this.User=this.$route.params.data
-        if(!this.UserName){
-            return
+        if(!this.$route.params.data){
+            if(localStorage.user){
+                this.User=localStorage.user
+            }
+        }else{
+            this.User=this.$route.params.data
         }
         this.search(this.UserName)
     }
