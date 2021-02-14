@@ -46,6 +46,7 @@ export default {
   justify-content: center;
   align-items: center;
   font-weight: 400;
+  text-align: center;
 }
 .RedirectPage h2{
   margin-top: 0;

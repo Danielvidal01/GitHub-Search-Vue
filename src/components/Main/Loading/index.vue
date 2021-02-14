@@ -1,9 +1,9 @@
 <template>
   <div class="page-loader">
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
   </div> 
 </template>
 
@@ -25,7 +25,7 @@ export default {
     height: 100vh;
     z-index: 999;
 }
-.cube{
+.item{
     width: 1.6vh;
     height: 10vh;
     margin-right: 10px;

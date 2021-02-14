@@ -1,24 +1,24 @@
 # Github-Search
 
-## Project setup
+
+## Sistema de busca utilizando a API do github.
+-   axios
+-   vue-router
+
+## Para inicializar o projeto em sua maquina!
+-   primeiro certifique-se de que possui NODE v14.15.0 ou superior!
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Em desenvolvimento com compilação automatica e live reload.
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Build para produção!
+-   nota: não foi "buildado" pois a hospedagem utilizada(NETLIFY) possui um sistema de autobuild.
 ```
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
