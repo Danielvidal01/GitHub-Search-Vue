@@ -2,7 +2,7 @@
     
 <div class="Content">
     <div class="if" v-if="!User || !info">
-          <Redirect/>
+          <Redirect :UserName="User"/>
     </div>
     
     <div class="loading" v-else-if="loading">
@@ -59,7 +59,11 @@ export default {
     computed:{
         sortRepos(){
                 return this.orderBy(this.repos)
-            }
+            },
+        UserName(){
+            return this.User.trim()
+        }
+
         },
     methods:{
             async search(userName){
@@ -73,8 +77,6 @@ export default {
                     this.countStars(this.repos);
                 } catch (error) {
                     this.info=false;
-                    alert('usuario não encontrado!');
-                    this.$router.push({name:'home'});
                 }finally{
                     this.loading=false;
                 }
@@ -99,10 +101,10 @@ export default {
     
     created(){
         this.User=this.$route.params.data
-        if(!this.User){
+        if(!this.UserName){
             return
         }
-        this.search(this.User)
+        this.search(this.UserName)
     }
     }
 
